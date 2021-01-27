@@ -5,12 +5,17 @@ using UnityEngine;
 
 public class DefenderSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject defender;
+    private Defender defender;
 
     private void OnMouseDown()
     {
         Debug.Log("Mouse clicked");
         SpawnDefender(GetSquareClicked());
+    }
+
+    public void SetSelectedDefender(Defender defenderToSelect)
+    {
+        defender = defenderToSelect;
     }
 
     private Vector2 GetSquareClicked()
@@ -30,7 +35,7 @@ public class DefenderSpawner : MonoBehaviour
 
     private void SpawnDefender(Vector2 gridPos)
     {
-        GameObject newDefender = Instantiate(defender, gridPos, Quaternion.identity) as GameObject;
+        Defender newDefender = Instantiate(defender, gridPos, Quaternion.identity) as Defender;
         Debug.Log(gridPos);
     }
 }
